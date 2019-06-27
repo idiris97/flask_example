@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block title %}
+     edit post
+{% endblock %}
+
+{% block content_title %}
+    Edit Post
+{% endblock %}
+
+{% block content %}
+
+  <div class="col-md-6">
+    <form action="{{ url_for('pos.edit_post', slug=post.slug) }}" method="post">
+        {% for foo in form %}
+            <div class="form-group">
+             {{ foo.label(class='control-label') }}
+             {{ foo(class='form-control')  }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Edit</button>
+    </form>
+      <br>
+      <a href="{{ url_for('pos.post_detail', slug=post.slug) }}"><button type="button" class="btn btn-danger">Cancel</button></a>
+  </div>
+
+{% endblock %}
